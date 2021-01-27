@@ -4,7 +4,7 @@
 
 #返回循环内容
 function print_list($class, $pic,$url,$title){
-    $t1 = '<a href="'.$url.'">';
+    $t1 = '<a href="'.$url.'" target="_blank">';
 	$t2 = '		<div class="portfolio '.$class.'" data-cat="'.$class.'">';
 	$t3 = '				<div class="portfolio-wrapper">				
 							<img src="images/'.$pic.'"  alt="Image 2" />';
@@ -43,7 +43,7 @@ function print_filter_all($arr){
 #输出APP页面循环内容
 function print_app($pic,$url,$title){
 	$t1 = '	<li>
-				<a  href="'.$url.'">
+				<a  href="'.$url.'" target="_blank">
 					<img src="images/'.$pic.'"  alt="Image 2" />
 					<p style="text-align:center; color:black">'.$title.'</p>
 				</a>					

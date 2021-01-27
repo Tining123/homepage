@@ -10,6 +10,62 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!--  jquery plguin -->
 <script type="text/javascript" src="js/jquery.min.js"></script>
+<!-- back to top -->
+<style>
+    .back-to-top {
+      display: none;
+      /* 默认是隐藏的，这样在第一屏才不显示 */
+      position: fixed;
+      /* 位置是固定的 */
+      bottom: 20px;
+      /* 显示在页面底部 */
+      right: 30px;
+      /* 显示在页面的右边 */
+      z-index: 99;
+      /* 确保不被其他功能覆盖 */
+      border: 1px solid #5cb85c;
+      /* 显示边框 */
+      outline: none;
+      /* 不显示外框 */
+      background-color: #fff;
+      /* 设置背景背景颜色 */
+      color: #5cb85c;
+      /* 设置文本颜色 */
+      cursor: pointer;
+      /* 鼠标移到按钮上显示手型 */
+      padding: 10px 15px 15px 15px;
+      /* 增加一些内边距 */
+      border-radius: 10px;
+      /* 增加圆角 */
+    }
+
+    .back-to-top:hover {
+      background-color: #5cb85c;
+      /* 鼠标移上去时，反转颜色 */
+      color: #fff;
+    }
+  </style>
+  <button class="js-back-to-top back-to-top" title="回到头部">︽</button>
+  <script>
+    $(function() {
+      var $win = $(window);
+      var $backToTop = $('.js-back-to-top');
+      // 当用户滚动到离顶部100像素时，展示回到顶部按钮
+      $win.scroll(function() {
+        if ($win.scrollTop() > 100) {
+          $backToTop.show();
+        } else {
+          $backToTop.hide();
+        }
+      });
+      // 当用户点击按钮时，通过动画效果返回头部
+      $backToTop.click(function() {
+        $('html, body').animate({
+          scrollTop: 0
+        }, 200);
+      });
+    });
+  </script>
 <!-- Add fancyBox main JS and CSS files -->
 <link href="css/magnific-popup.css" rel="stylesheet" type="text/css">
 <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
