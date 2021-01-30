@@ -79,6 +79,7 @@
 			<ul class="menu">
 				<li><a href="index.php">首页</a></li>
 				<li><a href="portfolio.php">合集</a></li>
+				<li ><a href="status.php">状态</a></li>
 				<li class="active"><a href="about.php">关于</a></li>
 			</ul>
 			<div id="sb-search" class="sb-search">
@@ -98,6 +99,7 @@
 	            <ul class="nav-list">
 					<li class="nav-item"><a href="index.php">首页</a></li>
 	                <li class="nav-item"><a href="portfolio.php">合集</a></li>
+	                <li class="nav-item"><a href="status.php">状态</a></li>
 	                <li class="nav-item"><a href="about.php">关于</a></li>
 	                <div class="clear"></div>
 	            </ul>
@@ -150,6 +152,7 @@
 				<ul>
 					<li><a href="index.php">首页</a></li>
 					<li><a href="portfolio.php">合集</a></li>
+					<li><a href="about.php">状态</a></li>
 					<li><a href="about.php">关于</a></li>
 				</ul>
 			</div>

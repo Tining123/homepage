@@ -10,17 +10,18 @@ function output_static_game($arr,$info,$class){
     $str = "";
     for ($i=0; $i<$length; $i++)
     {
-        $url = "http://".$_SERVER['HTTP_HOST'].$class.$arr[$i];
+        $url = "http://".$_SERVER['HTTP_HOST']."/".$class."/".$arr[$i];
         #判断是否存在信息
         if(array_key_exists($arr[$i],$info))
         {
             $url = "http://".$_SERVER['HTTP_HOST'].$info[$arr[$i]];
         }
-        $str = $str.print_list("static_game", $GLOBALS["pic"].".jpg" , $url ,$arr[$i]);
+        $str = $str.print_list($class, $GLOBALS["pic"].".jpg" , $url ,$arr[$i]);
         $GLOBALS["pic"] = $GLOBALS["pic"] + 1;
     }
     return $str;
 }
+
 
 #准备输出服务器应用
 function prepare_server_app($arr,$info,$class){
@@ -40,8 +41,13 @@ function prepare_server_app($arr,$info,$class){
         
         
         $GLOBALS["pic"] = $GLOBALS["pic"] + 1;
-        if(!empty($search) && strpos($class,$search) == false && strpos($arr[$i],$search) == false ){ 
-            continue;
+        if(!empty($search)){ 
+            $low_class = '          '.((string)strtolower($class)).'          ';
+            $low_key = '          '.((string)strtolower($arr[$i])).'          ';
+            $low_search = ((string)strtolower($search));
+            if(strpos($low_class,$low_search) == false && strpos($low_key,$low_search) == false ){
+                continue;
+            }
         }
         array_push($GLOBALS["app"],$str);
     }

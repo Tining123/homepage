@@ -20,6 +20,14 @@ function getServerSite(){
     return $res;
 }
 
+#获取静态服务配置
+function getStaticServerSite(){
+    $res = Array();
+    $res["机器学习 VS Flappy Bird"] = "/server_app/机器学习 VS Flappy Bird/source/";
+    #两两一组，名称+端口/后缀
+    return $res;
+}
+
 #获取静态游戏配置
 function getServerGame(){
     $res = Array();
@@ -42,8 +50,14 @@ function getStaticGame(){
 function getServerApp(){
     $res = Array();
     $res["机器学习 VS Flappy Bird"] = "/server_app/机器学习 VS Flappy Bird/source/";
+    $res["表情包生成器"] = ":4003";
+    $res["三体模拟器"] = ":4004";
+    $res["肺炎模拟器"] = ":4005";
     #两两一组，名称+端口/后缀
     return $res;
 }
+
+
+
 
 ?>

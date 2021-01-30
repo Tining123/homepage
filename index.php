@@ -128,10 +128,50 @@
 					mainClass: 'my-mfp-zoom-in'
 			});
 		});
-		</script>
+	</script>
+<style>
+ .button,
+ .button-success,
+ .button-error,
+ .button-warning,
+ .button-secondary {
+	font-family: "'微软雅黑','Helvetica Neue',Helvetica,Arial,sans-serif";
+	font-size: 13px!important;
+	height: 30px;
+	line-height: 18px!important;
+	padding: 3px 18px;
+	display: inline-block;
+	vertical-align: middle;
+	font-weight: normal;
+	border-radius: 3px;
+	margin: 0 8px 0 3px;
+	border: 1px solid #3383da;
+	color: #ffffff;
+	background-color: #3383da;
+	cursor: pointer;
+ }
 
+ .button-success {
+	 background: rgb(28, 184, 65); /* this is a green */
+ }
+
+ .button-error {
+	 background: rgb(202, 60, 60); /* this is a maroon */
+ }
+
+ .button-warning {
+	 background: rgb(223, 117, 20); /* this is an orange */
+ }
+
+ .button-secondary {
+	 background: rgb(66, 184, 221); /* this is a light blue */
+ }
+
+
+</style>
 </head>
 <body>
+
 <!-- start header -->
 <div class="header_bg">
 <div class="wrap">
@@ -143,6 +183,7 @@
 			<ul class="menu">
 				<li class="active"><a href="index.php">首页</a></li>
 				<li><a href="portfolio.php">合集</a></li>
+				<li><a href="status.php">状态</a></li>
 				<li><a href="about.php">关于</a></li>
 			</ul>
 			<div id="sb-search" class="sb-search">
@@ -158,10 +199,12 @@
 				new UISearch( document.getElementById( 'sb-search' ) );
 			</script>
 			<!-- start smart_nav * -->
+			<!-- 手机下可查看的搜索栏位扩展 -->
 	        <nav class="nav">
 	            <ul class="nav-list">
 					<li class="nav-item"><a href="index.php">首页</a></li>
 	                <li class="nav-item"><a href="portfolio.php">合集</a></li>
+	                <li class="nav-item"><a href="status.php">状态</a></li>
 	                <li class="nav-item"><a href="about.php">关于</a></li>
 	                <div class="clear"></div>
 	            </ul>
@@ -212,18 +255,22 @@
 		?>
 			<div class="container">
 					<ul id="filters" class="clearfix">
+						<li><span class="filter active" data-filter="static_game server_game server_site"><a href="/portfolio.php"><button type="button" class="button-success">更多内容请访问合集页面</button></a></span></li>
+						<!--
 						<li><span class="filter active" data-filter="static_game server_game server_site">All</span></li> /
 						<li><span class="filter" data-filter="server_site">server_site</span></li> /
 						<li><span class="filter" data-filter="server_game static_game">game</span></li> /
 						<li><span class="filter" data-filter="static_game">static_game</span></li> /
 						<li><span class="filter" data-filter="server_game">server_game</span></li> 
+						<!-->
 					</ul>
 		<div id="portfoliolist">
 			<?php
 				include("function.php");
 				print(output_server_site($server_site_arr));
-				print(output_server_game($server_game_arr));
-				print(output_static_game($static_game,$static_game_arr,'/static_game/'));
+				print(output_static_game($static_server_site,$static_server_site_arr,'server_site'));
+				#print(output_server_game($server_game_arr));
+				#print(output_static_game($static_game,$static_game_arr,'static_game'));
 		    ?>
 		</div>
 	</div><!-- end container -->
@@ -238,6 +285,7 @@
 				<ul>
 				<li><a href="index.php">首页</a></li>
 					<li><a href="portfolio.php">合集</a></li>
+					<li><a href="status.php">状态</a></li>
 					<li><a href="about.php">关于</a></li>
 				</ul>
 			</div>

@@ -82,9 +82,30 @@
 					removalDelay: 300,
 					mainClass: 'my-mfp-zoom-in'
 			});
+			$("a").on('click', function(event) {
+				// Make sure this.hash has a value before overriding default behavior
+				if (this.hash !== "") {
+				// Prevent default anchor click behavior
+				event.preventDefault();
+
+				// Store hash
+				var hash = this.hash;
+
+				// Using jQuery's animate() method to add smooth page scroll
+				// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+				$('html, body').animate({
+					scrollTop: $(hash).offset().top
+				}, 300, function(){
+
+					// Add hash (#) to URL when done scrolling (default click behavior)
+					window.location.hash = hash;
+				});
+				} // End if
+				});
 		});
 		</script>
 </head>
+<!-- 字体设计代码段 -->
 <style>
 	a img
 	{ 
@@ -100,6 +121,15 @@
 		margin-top: 0;
 		margin-bottom: 1%;
 	}
+	.appp{
+		text-align: center;
+		font-size: large;
+		font-family: "'微软雅黑','Helvetica Neue',Helvetica,Arial,sans-serif";
+		font-weight: bolder;
+	}
+	body,html{
+		scroll-behavior: initautoial;
+	}
 </style>
 <body>
 <!-- start header -->
@@ -113,6 +143,7 @@
 			<ul class="menu">
 				<li><a href="index.php">首页</a></li>
 				<li class="active"><a href="portfolio.php">合集</a></li>
+				<li><a href="status.php">状态</a></li>
 				<li><a href="about.php">关于</a></li>
 			</ul>
 			<div id="sb-search" class="sb-search">
@@ -132,6 +163,7 @@
 	            <ul class="nav-list">
 	                <li class="nav-item"><a href="index.php">首页</a></li>
 	                <li class="nav-item"><a href="portfolio.php">合集</a></li>
+	                <li class="nav-item"><a href="status.php">状态</a></li>
 	                <li class="nav-item"><a href="about.php">关于</a></li>
 	                <div class="clear"></div>
 	            </ul>
@@ -148,7 +180,7 @@
 <div class="wrap">
 	<div class="slider">
 		<h2>空间站功能合集</h2>
-		<h3>We are all, We are one</h3>
+		<h3>We are all, we are one</h3>
 	</div>
 </div>
 </div>
@@ -166,15 +198,42 @@
 					<a class="btn" href="details.html">Read more</a>
 				</div>
 			</div>
+			<div class="span_of_4" style="text-align: center; margin-top:-5%">
+				<div class="span1_of_4">
+					<p class="bg" style="padding: 4%; margin-top: 8%; color:black;">快速跳转</p>
+				</div>
+				<div class="span1_of_4">
+					<a href="#site"><span class="bg"><p style="color:black;">站点合集</p></span></a>
+				</div>
+				<div class="span1_of_4">
+					<a href="#game"><span class="bg"><p style="color:black;">游戏合集</p></span></a>
+				</div>
+				<div class="span1_of_4">
+					<a href="#app"><span class="bg"><p style="color:black;">应用合集</p></span></a>
+				</div>
+			</div>
+			<div class="clear"></div>
 			<!-- end popup -->
 				<?php
 					include("content.php");
 					include("function.php");
+					print('<hr id="site" /><div class = "appp" ><p>站点：</p></div>
+                    <hr />');
 					prepare_server_app($server_site,$server_site_arr,"");
+					prepare_server_app($static_server_site,$static_server_site_arr,"/server_site/");
+					print(ouput_server_app());
+					$GLOBALS["app"] = Array();
+					print('<hr id="game" /><div class = "appp" ><p>游戏：</p></div>
+                    <hr />');
 					prepare_server_app($server_game,$server_game_arr,"/server_game/");
 					prepare_server_app($static_game,$static_game_arr,"/static_game/");
+					print(ouput_server_app());
+					$GLOBALS["app"] = Array();
+					print('<hr id="app" /><div class = "appp" ><p>应用：</p></div>
+                    <hr />');
 					prepare_server_app($server_app,$server_app_arr,"/server_app/");
 					print(ouput_server_app());
+					$GLOBALS["app"] = Array();
 				?>
 		</div>
 	</div>
@@ -188,6 +247,7 @@
 				<ul>
 				<li><a href="index.php">首页</a></li>
 					<li><a href="portfolio.php">合集</a></li>
+					<li><a href="status.php">状态</a></li>
 					<li><a href="about.php">关于</a></li>
 				</ul>
 			</div>
